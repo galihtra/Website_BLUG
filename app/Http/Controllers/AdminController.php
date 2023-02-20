@@ -42,4 +42,12 @@ class AdminController extends Controller
         $admin->update();
         return redirect()->back()->with('success', 'Admin update succesfully');
     }
+
+    public function destroy(Request $request)
+    {
+        $admin_id = $request->input('delete_admin_id');
+        $admin = Admin::find($admin_id);
+        $admin->delete();
+        return redirect()->back()->with('success', 'Admin deleted succesfully');
+    }
 }

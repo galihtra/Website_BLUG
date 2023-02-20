@@ -19,3 +19,4 @@ Route::get('admin', [AdminController::class, 'index']);
 Route::post('add-admin', [AdminController::class, 'store']);
 Route::get('edit-admin/{id}', [AdminController::class, 'edit']);
 Route::put('update-admin', [AdminController::class, 'update']);
+Route::delete('delete-admin', [AdminController::class, 'destroy']);

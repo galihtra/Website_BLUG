@@ -86,6 +86,32 @@
             </div>
             {{-- end Modal --}}
 
+            <!-- Modal delete-->
+            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete Admin</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <form action="{{ url('delete-admin') }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+
+                            <h4 class="m-2">Confirm to delete admin?</h4>
+                            <input type="hidden" id="deleting_id" name="delete_admin_id">
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Yes Delete</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {{-- end Modal --}}
+
             <!-- Table -->
             <table class="table table-responsive-lg">
                 <thead>
@@ -114,7 +140,7 @@
                                 {{-- Akhir Button edit --}}
 
                                 {{-- Button delete --}}
-                                <button type="button" class="btn btn-danger">
+                                <button type="button" class="btn btn-danger deletebtn" value="{{ $item->id }}">
                                     <i class="far fa-trash-alt"></i>
                                 </button>
                                 {{-- Akhir Button delete --}}
@@ -132,6 +158,13 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
+
+            $(document).on('click', '.deletebtn', function() {
+                var admin_id = $(this).val();
+                // alert(admin_id);
+                $('#deleteModal').modal('show');
+                $('#deleting_id').val(admin_id);
+            });
 
             $(document).on('click', '.editbtn', function() {
                 var admin_id = $(this).val();
