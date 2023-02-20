@@ -16,12 +16,14 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('admin');
-});
+})->middleware('auth');
 
-Route::get('/login',[LoginController::class, 'login']);
+Route::get('/login',[LoginController::class, 'login'])->name('login');
 
 Route::post('/loginproses',[LoginController::class, 'loginproses']);
 
 Route::get('/register',[LoginController::class, 'register']);
 
 Route::post('/registeruser',[LoginController::class, 'registeruser']);
+
+Route::get('/logout',[LoginController::class, 'logout']);
