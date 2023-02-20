@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin');
-});
+
+Route::get('admin', [AdminController::class, 'index']);
+Route::post('add-admin', [AdminController::class, 'store']);
+Route::get('edit-admin/{id}', [AdminController::class, 'edit']);
+Route::put('update-admin', [AdminController::class, 'update']);
