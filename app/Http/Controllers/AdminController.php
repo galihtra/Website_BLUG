@@ -19,8 +19,10 @@ class AdminController extends Controller
         $admin = new Admin;
         $admin->name = $request->input('name');
         $admin->username = $request->input('username');
-        $admin->password = $request->input('password');
-        $admin->save();
+        $admin->password = bcrypt($request->input('password'));
+        if($admin->save()){
+            \DB::statement('INSERT INTO `users` SELECT * FROM `admins` WHERE username = "'.$admin->username.'" ');
+        }
         return redirect()->back()->with('success', 'Admin added succesfully');
     }
 
