@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <h1 class="h3 mb-2 text-gray-800">Admin</h1>
+    <h1 class="h3 mb-2 text-gray-800">Hai, Admin {{ Auth::user()->name }}</h1>
 
     @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">

@@ -15,11 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login',[LoginController::class, 'login'])->name('login');
-
+//login
+Route::get('/',[LoginController::class, 'login'])->name('login');
 Route::post('/loginproses',[LoginController::class, 'loginproses']);
 
-Route::get('admin', [AdminController::class, 'index']);
+//logout
+Route::get('/logout',[LoginController::class, 'logout']);
+
+Route::get('admin', [AdminController::class, 'index'])->middleware('auth');
 Route::post('add-admin', [AdminController::class, 'store']);
 Route::get('edit-admin/{id}', [AdminController::class, 'edit']);
 Route::put('update-admin', [AdminController::class, 'update']);
