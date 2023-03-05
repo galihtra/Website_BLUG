@@ -18,8 +18,8 @@ id="accordionSidebar"
 <hr class="sidebar-divider my-0" />
 
 <!-- Nav Item - Dashboard -->
-<li class="nav-item active">
-  <a class="nav-link" href="index.html">
+<li class="nav-item {{ Request::is('admin') ? 'active' : ''}}">
+  <a class="nav-link" href="admin">
     <i class="fas fa-users"></i>
     <span>Admin</span></a
   >
@@ -32,10 +32,10 @@ id="accordionSidebar"
 <div class="sidebar-heading">Content</div>
 
 <!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
-  <a class="nav-link" href="#">
+<li class="nav-item {{ Request::is('divisi') ? 'active' : ''}}">
+  <a class="nav-link" href="divisi">
     <i class="fas fa-photo-video"></i>
-    <span>Content</span>
+    <span>Divisi</span>
   </a>
 </li>
 
