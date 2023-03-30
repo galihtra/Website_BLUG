@@ -39,11 +39,10 @@ id="accordionSidebar"
   </a>
 </li>
 
-<!-- Nav Item - Utilities Collapse Menu -->
-<li class="nav-item">
-  <a class="nav-link collapsed" href="#">
+<li class="nav-item {{ Request::is('category') ? 'active' : ''}}">
+  <a class="nav-link" href="category">
     <i class="fas fa-photo-video"></i>
-    <span>Content</span>
+    <span>Category</span>
   </a>
 </li>
 
