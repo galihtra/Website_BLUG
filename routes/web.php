@@ -54,5 +54,4 @@ Route::delete('category/{category}', [AdminCategoryController::class, 'destroy']
 
 // Post
 Route::get('posts', [PostController::class, 'index']);  
-Route::get('posts/{post:id}', [PostController::class, 'show']);
-
+Route::get('posts/{post:slug}', [PostController::class, 'show']);
