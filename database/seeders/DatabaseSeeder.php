@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
+        // Seeder Admin
         \App\Models\Admin::create([
             'name' => 'adminBLUG',
             'username' => 'admin123',
