@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DivisiController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,7 @@ Route::get('edit-divisi/{id}', [DivisiController::class, 'edit']);
 Route::put('update-divisi', [DivisiController::class, 'update']);
 Route::delete('delete-divisi', [DivisiController::class, 'destroy']);
 
+// Categories
 Route::get('/categories', function () {
     return view('categories_show', [
         'title' => 'Post Categories',
@@ -47,8 +49,11 @@ Route::get('/categories', function () {
         'categories' => Category::all()
     ]);
 });
-
-
 Route::get('category', [AdminCategoryController::class, 'index'])->name('category.index');
 Route::post('category', [AdminCategoryController::class, 'store']);
 Route::delete('category/{category}', [AdminCategoryController::class, 'destroy']);
+
+// Post
+Route::get('posts', [PostController::class, 'index']);  
+Route::get('posts/{post:id}', [PostController::class, 'show']);
+
