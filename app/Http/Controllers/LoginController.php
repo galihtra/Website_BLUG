@@ -11,35 +11,40 @@ class LoginController extends Controller
 {
     //login
     public function login(){
-        return view('login');
+        if (empty(Auth::user()->name)) {
+            return view('login');
+        } else {
+            return redirect('/admin');
+        }
     }
 
     public function loginproses(Request $request){
         if (Auth::attempt($request->only('username','password'))) {
-            return redirect('/');
+            return redirect('/admin');
         }
 
-        return \redirect('/login');
+        return redirect('/');
     }
 
-    //register
-    public function register(){
-        return view('register');
-    }
-    public function registeruser(Request $request){
-        User::create([
-            'name' => $request->name,
-            'username' => $request->username,
-            'password' => bcrypt($request->password),
-            'remember_token' => Str::random(60),
-        ]);
+    //register (tidak dipakai)
+    // public function register(){
+    //     return view('register');
+    // }
+    // public function registeruser(Request $request){
+    //     User::create([
+    //         'name' => $request->name,
+    //         'username' => $request->username,
+    //         'password' => bcrypt($request->password),
+    //         'remember_token' => Str::random(60),
+    //     ]);
 
-        return redirect('/login');
-    }
+    //     return redirect('/');
+    // }
 
     //logout
     public function logout(){
         Auth::logout();
-        return redirect('/login');
+
+        return redirect('/');
     }
 }

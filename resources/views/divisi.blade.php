@@ -14,7 +14,7 @@
     <div class="card shadow mb-4">
         <div class="card-header">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Tambah
-                Admin</button>
+                Divisi</button>
         </div>
         <div class="card-body">
 
@@ -23,28 +23,20 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Add Admin</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Add Divisi</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ url('add-admin') }}" method="POST">
+                        <form action="{{ url('add-divisi') }}" method="POST">
                             @csrf
                             <div class="modal-body">
                                 <div class="form-group mb-3">
-                                    <label for="">Name</label>
+                                    <label for="">Nama Divisi</label>
                                     <input type="text" class="form-control" name="name" required>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="">Username</label>
-                                    <input type="text" class="form-control" name="username" required>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="">Password</label>
-                                    <input type="password" class="form-control" name="password" required>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </form>
                     </div>
@@ -57,23 +49,19 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Edit Admin</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Divisi</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="{{ url('update-admin') }}" method="POST">
+                        <form action="{{ url('update-divisi') }}" method="POST">
                             @csrf
                             @method('PUT')
 
-                            <input type="hidden" name="admin_id" id="admin_id">
+                            <input type="hidden" name="divisi_id" id="divisi_id">
 
                             <div class="modal-body">
                                 <div class="form-group mb-3">
                                     <label for="">Name</label>
                                     <input type="text" id="name" class="form-control" name="name" required>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="">Username</label>
-                                    <input type="text" id="username" class="form-control" name="username" required>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -91,16 +79,16 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Delete Admin</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Delete Divisi</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
                         </div>
-                        <form action="{{ url('delete-admin') }}" method="POST">
+                        <form action="{{ url('delete-divisi') }}" method="POST">
                             @csrf
                             @method('DELETE')
 
-                            <h4 class="m-2">Confirm to delete admin?</h4>
-                            <input type="hidden" id="deleting_id" name="delete_admin_id">
+                            <h4 class="m-2">Confirm to delete divisi?</h4>
+                            <input type="hidden" id="deleting_id" name="delete_divisi_id">
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -116,22 +104,15 @@
             <table class="table table-responsive-lg">
                 <thead>
                     <tr>
-                        <th>Nama</th>
-                        <th>Username</th>
-                        <th>Status</th>
+                        <th>Nama Divisi</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($admin as $item)
+                    @foreach ($divisi as $item)
                         <tr>
                             <td>{{ $item->name }}</td>
-                            <td>{{ $item->username }}</td>
-                            <td class="text-success">{{ $item->status }}</td>
                             <td>
-                                <button type="button" class="btn btn-info">
-                                    <i class="fas fa-lock"></i>
-                                </button>
                                 {{-- Button edit --}}
                                 <button type="button" class="btn btn-secondary editbtn" value="{{ $item->id }}">
                                     <i class="fas fa-pen"></i>
@@ -159,25 +140,24 @@
         $(document).ready(function() {
 
             $(document).on('click', '.deletebtn', function() {
-                var admin_id = $(this).val();
-                // alert(admin_id);
+                var divisi_id = $(this).val();
+                // alert(divisi_id);
                 $('#deleteModal').modal('show');
-                $('#deleting_id').val(admin_id);
+                $('#deleting_id').val(divisi_id);
             });
 
             $(document).on('click', '.editbtn', function() {
-                var admin_id = $(this).val();
-                // alert(admin_id);
+                var divisi_id = $(this).val();
+                // alert(divisi_id);
                 $('#editModal').modal('show');
 
                 $.ajax({
                     type: "GET",
-                    url: "/edit-admin/" + admin_id,
+                    url: "/edit-divisi/" + divisi_id,
                     success: function(response) {
                         // console.log(response.admin.username);
-                        $('#name').val(response.admin.name)
-                        $('#username').val(response.admin.username)
-                        $('#admin_id').val(admin_id)
+                        $('#name').val(response.divisi.name)
+                        $('#divisi_id').val(divisi_id)
                     }
                 });
 
