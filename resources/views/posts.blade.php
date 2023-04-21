@@ -37,9 +37,8 @@
                 <div class="card-body text-center">
 
                     {{-- <h3 class="card-title"><a href="/posts/{{ $posts[0]->slug }}" --}}
-                    <h3 class="card-title"><a href="/posts/{{ $post->slug }}"
+                    <h3 class="card-title"><a href="posts/{{ $post->slug }}"
                         class="text-decoration-none text-dark">{{ $post->title }}</a></h3>
-
                     <p>
                         {{-- <small class="text-muted">
                             By. <a href="/blog?author={{ $posts[0]->author->username }}"

@@ -23,7 +23,7 @@
     <!-- Custom styles for this template-->
     <link href="/../css/sb-admin-2.min.css" rel="stylesheet" />
 
-    <link rel="shortcut icon" href="logo-blug.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/../logo-blug.png" type="image/x-icon" />
 </head>
 
 <body id="page-top">
