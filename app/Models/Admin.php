@@ -56,6 +56,11 @@ class Admin extends Authenticatable
     {
         return 'string';
     }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }
 
 ?>
