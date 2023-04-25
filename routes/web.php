@@ -48,6 +48,13 @@ Route::get('/categories', function () {
         'categories' => Category::all()
     ]);
 });
+Route::get('/categories/{category:slug}', function (Category $category) {
+    return view('category', [
+        'title' => $category->name,
+        'posts' => $category->posts,
+        'category' => $category->name 
+    ]);
+});
 Route::get('category', [AdminCategoryController::class, 'index'])->name('category.index');
 Route::post('category', [AdminCategoryController::class, 'store']);
 Route::delete('category/{category}', [AdminCategoryController::class, 'destroy']);
