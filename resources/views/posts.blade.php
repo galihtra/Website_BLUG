@@ -59,7 +59,7 @@
         
 
         {{-- Halaman Post --}}
-        {{-- <div class="container">
+        <div class="container">
             <div class="row">
                 @foreach ($posts->skip(1) as $post)
                     <div class="col-md-4 mb-3">
@@ -77,11 +77,11 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ $post->title }}</h5>
                                 <p>
-                                    <small class="text-muted">
+                                    {{-- <small class="text-muted">
                                         By. <a href="/blog?author={{ $post->author->username }}"
                                             class="text-decoration-none">{{ $post->author->name }}</a>
                                         {{ $post->created_at->diffForHumans() }}
-                                    </small>
+                                    </small> --}}
                                 </p>
                                 <p class="card-text">{{ $post->excerpt }}</p>
                                 <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Read more</a>
@@ -90,7 +90,7 @@
                     </div>
                 @endforeach
             </div>
-        </div> --}}
+        </div>
     @else
         <p class="text-center fs-4">No post found.</p>
     @endif

@@ -56,6 +56,12 @@ class Admin extends Authenticatable
     {
         return 'string';
     }
+
+    // Relasi ke tabel Post
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }
 
 ?>

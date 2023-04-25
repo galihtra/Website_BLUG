@@ -11,7 +11,7 @@ class Post extends Model
     use HasFactory;
     // use Sluggable;
 
-    protected $fillable = ['user_id','title', 'category_id', 'image', 'slug', 'excerpt', 'body'];
+    protected $fillable = ['admin_id','title', 'category_id', 'image', 'slug', 'excerpt', 'body'];
     // protected $with = ['category', 'author'];
 
     // public function scopeFilter($query, array $filters)
@@ -40,14 +40,16 @@ class Post extends Model
     //     });
     // }
 
+    // Relasi ke tabel Category, dan Admin
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
-    // public function author()
-    // {
-    //     return $this->belongsTo(User::class, 'user_id');
-    // }
+
+    public function author()
+    {
+        return $this->belongsTo(Admin::class, 'admin_id');
+    }
 
     // // setiap route mencari slug bukan id
     // public function getRouteKeyName()

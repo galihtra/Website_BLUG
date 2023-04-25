@@ -12,6 +12,7 @@ class Category extends Model
     // Untuk menjaga hanya id yg tidak boleh di isi
     protected $guarded = ['id'];
 
+    // Relasi ke tabel Post
     public function posts()
     {
         return $this->hasMany(Post::class);
