@@ -8,9 +8,9 @@
                 {{-- bisa ambil seperti ini $post['title'] namun bisa seperti $post->title --}}
                 <h1 class="mb-3"><strong>{{ $post->title }}</strong></h1>
                 <p>By. 
-                    <a href="#{{ $post->author->username }}"
+                    <a href="/authors/{{ $post->author->username }}"
                         class="text-decoration-none">{{ $post->author->name }}</a> in
-                    <a href="/category/{{ $post->category->slug }}"
+                    <a href="/categories/{{ $post->category->slug }}"
                         class="text-decoration-none">{{ $post->category->name }}</a>
                 </p>
 

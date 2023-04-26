@@ -40,9 +40,9 @@
                         class="text-decoration-none text-dark">{{ $post->title }}</a></h3>
                     <p>
                         <small class="text-muted">
-                             By. <a href="#{{ $posts[0]->author->username }}" 
+                             By. <a href="/authors/{{ $posts[0]->author->username }}" 
                                 class="text-decoration-none">{{ $posts[0]->author->name }}</a> in
-                            <a href="/category/{{ $posts[0]->category->slug }}"
+                            <a href="/categories/{{ $posts[0]->category->slug }}"
                                 class="text-decoration-none">{{ $posts[0]->category->name }}</a>
                             {{ $posts[0]->created_at->diffForHumans() }}
                         </small>

@@ -6,6 +6,7 @@ use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Models\Category;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,11 +20,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//login
+// login
 Route::get('/',[LoginController::class, 'login'])->name('login');
 Route::post('/loginproses',[LoginController::class, 'loginproses']);
 
-//logout
+// logout
 Route::get('/logout',[LoginController::class, 'logout']);
 
 // Admin
@@ -48,7 +49,7 @@ Route::get('/categories', function () {
         'categories' => Category::all()
     ]);
 });
-Route::get('/category/{category:slug}', function (Category $category) {
+Route::get('/categories/{category:slug}', function (Category $category) {
     return view('category', [
         'title' => $category->name,
         'posts' => $category->posts,
@@ -62,3 +63,11 @@ Route::delete('category/{category}', [AdminCategoryController::class, 'destroy']
 // Post
 Route::get('posts', [PostController::class, 'index']);  
 Route::get('posts/{post:slug}', [PostController::class, 'show']);
+
+// Author
+Route::get('/authors/{author:username}', function(Admin $author){
+    return view('posts', [
+        'title' => 'Author Posts', 
+        'posts' => $author->posts
+    ]);
+});
